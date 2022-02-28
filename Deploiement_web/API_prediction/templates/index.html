@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html >
+  <meta charset="UTF-8">
+  <title>Prédiction pour l'octroi d'un crédit</title>
+  
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" media="all" type="text/css">
+
+</head>
+
+<body>
+ <div id="client">
+	<h1>Prédiction pour l'octroi d'un crédit à partir d'un modèle</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+      <input type="text" name="id_client" placeholder="id_client" required="required" value="{{ request.form['id_client'] }}"/>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_html }}
+
+ </div>
+
+
+</body>
+</html>

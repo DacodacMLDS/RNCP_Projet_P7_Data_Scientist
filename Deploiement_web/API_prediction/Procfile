@@ -1,0 +1,1 @@
+web: gunicorn P7_06_src_API_prediction:app --log-file=-

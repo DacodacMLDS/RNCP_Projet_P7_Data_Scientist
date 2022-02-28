@@ -1,0 +1,3 @@
+Accès API de production sur Heroku: https://davidp7apiflask.herokuapp.com
+
+Accès Dashboard sur Heroku: https://davidp7dashboard.herokuapp.com

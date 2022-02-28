@@ -1,0 +1,373 @@
+Deploiement Streamlit sur Heroku
+--------------------------------
+
+1) Sur GitHub, créer un repository en public, sans readme => dashboard-streamlit-heroku
+   Noter l'url du repository: https://github.com/DacodacMLDS/dashboard-streamlit-heroku.git
+   
+2) Sur git en local, créer un repository avec tous les fichiers nécessaires:
+   Procfile
+   requirements.txt
+   setup.sh
+   P7_06_dashboard.py
+   trained_gbc_model.pkl
+   NearestNeighborsModel.pkl
+   StandardScaler.pkl
+   data_predict_api.csv
+   df_interprete_mod.csv
+   df_nn.csv
+   data_api_target.csv
+   runtime.txt
+   feature_importance.png
+
+   Commandes dans git bash en local:
+   git init
+   git add Procfile data_predict_api.csv df_interprete_mod.csv df_nn.csv data_api_target.csv trained_gbc_model.pkl NearestNeighborsModel.pkl StandardScaler.pkl P7_06_dashboard.py  requirements.txt runtime.txt setup.sh feature_importance.png
+   git commit -m "dashboard_streamlit_heroku"
+   
+3) Publier sur le GitHub
+   
+   Commandes dans git bash en local:
+   git remote add origin https://github.com/DacodacMLDS/dashboard-streamlit-heroku.git
+   git push -u origin master
+   
+4) Sur GitHub, vérifier la présence de tous les fichiers du repo
+   
+   
+5) Sur le dashboard Heroku (https://dashboard.heroku.com)   Il faut peut-être se logger sur Heroku avant (heroku login sur Heroku CLI ou Heroku dashboard).
+
+   Clic sur bouton "Create new app"
+   Dans "app name": donner nom pour l'aaplication: davidp7dashboard
+   Clic sur le bouton "Create app"
+   Dans lécran suivant, dans la zone "Deployment method", choisir "Github".
+   Dans la zone "Connect to GitHub", renseigner le repo projet du github et clic sur "Connect".
+   Dans la zone "Manual deploy", choisir la branche à déployer (master) et clic sur "Deploy branch"
+   Vérifier si le déploiement s'est bien passé => message "Your app was successfully deployed."
+   Vérifier les logs: faire "view buil logs" dans l'application "davidp7dashboard"
+   
+6) Lien Heroku pour le dashboard: https://davidp7dashboard.herokuapp.com
+
+7 ) Buils logs:
+
+-----> Building on the Heroku-20 stack
+-----> Determining which buildpack to use for this app
+-----> Python app detected
+-----> No Python version was specified. Using the buildpack default: python-3.9.9
+       To use a different version, see: https://devcenter.heroku.com/articles/python-runtimes
+-----> Installing python-3.9.9
+-----> Installing pip 21.3.1, setuptools 57.5.0 and wheel 0.37.0
+-----> Installing SQLite3
+-----> Installing requirements with pip
+       Collecting pandas
+         Downloading pandas-1.3.5-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.5 MB)
+       Collecting numpy
+         Downloading numpy-1.21.5-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (15.7 MB)
+       Collecting sklearn
+         Downloading sklearn-0.0.tar.gz (1.1 kB)
+         Preparing metadata (setup.py): started
+         Preparing metadata (setup.py): finished with status 'done'
+       Collecting streamlit
+         Downloading streamlit-1.3.0-py2.py3-none-any.whl (9.2 MB)
+       Collecting seaborn
+         Downloading seaborn-0.11.2-py3-none-any.whl (292 kB)
+       Collecting matplotlib
+         Downloading matplotlib-3.5.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (11.2 MB)
+       Collecting python-dateutil>=2.7.3
+         Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+       Collecting pytz>=2017.3
+         Downloading pytz-2021.3-py2.py3-none-any.whl (503 kB)
+       Collecting scikit-learn
+         Downloading scikit_learn-1.0.1-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (24.7 MB)
+       Collecting protobuf!=3.11,>=3.6.0
+         Downloading protobuf-3.19.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+       Collecting gitpython!=3.1.19
+         Downloading GitPython-3.1.24-py3-none-any.whl (180 kB)
+       Collecting altair>=3.2.0
+         Downloading altair-4.1.0-py3-none-any.whl (727 kB)
+       Collecting pillow>=6.2.0
+         Downloading Pillow-8.4.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+       Collecting validators
+         Downloading validators-0.18.2-py3-none-any.whl (19 kB)
+       Collecting tzlocal
+         Downloading tzlocal-4.1-py3-none-any.whl (19 kB)
+       Collecting blinker
+         Downloading blinker-1.4.tar.gz (111 kB)
+         Preparing metadata (setup.py): started
+         Preparing metadata (setup.py): finished with status 'done'
+       Collecting watchdog
+         Downloading watchdog-2.1.6-py3-none-manylinux2014_x86_64.whl (76 kB)
+       Collecting base58
+         Downloading base58-2.1.1-py3-none-any.whl (5.6 kB)
+       Collecting pyarrow
+         Downloading pyarrow-6.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25.6 MB)
+       Collecting cachetools>=4.0
+         Downloading cachetools-5.0.0-py3-none-any.whl (9.1 kB)
+       Collecting packaging
+         Downloading packaging-21.3-py3-none-any.whl (40 kB)
+       Collecting pydeck>=0.1.dev5
+         Downloading pydeck-0.7.1-py2.py3-none-any.whl (4.3 MB)
+       Collecting toml
+         Downloading toml-0.10.2-py2.py3-none-any.whl (16 kB)
+       Collecting pympler>=0.9
+         Downloading Pympler-1.0.1-py3-none-any.whl (164 kB)
+       Collecting requests
+         Downloading requests-2.26.0-py2.py3-none-any.whl (62 kB)
+       Collecting tornado>=5.0
+         Downloading tornado-6.1-cp39-cp39-manylinux2010_x86_64.whl (427 kB)
+       Collecting astor
+         Downloading astor-0.8.1-py2.py3-none-any.whl (27 kB)
+       Collecting click<8.0,>=7.0
+         Downloading click-7.1.2-py2.py3-none-any.whl (82 kB)
+       Collecting attrs
+         Downloading attrs-21.2.0-py2.py3-none-any.whl (53 kB)
+       Collecting scipy>=1.0
+         Downloading scipy-1.7.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (39.8 MB)
+       Collecting pyparsing>=2.2.1
+         Downloading pyparsing-3.0.6-py3-none-any.whl (97 kB)
+       Collecting fonttools>=4.22.0
+         Downloading fonttools-4.28.5-py3-none-any.whl (890 kB)
+       Collecting kiwisolver>=1.0.1
+         Downloading kiwisolver-1.3.2-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+       Collecting cycler>=0.10
+         Downloading cycler-0.11.0-py3-none-any.whl (6.4 kB)
+       Collecting jinja2
+         Downloading Jinja2-3.0.3-py3-none-any.whl (133 kB)
+       Collecting jsonschema
+         Downloading jsonschema-4.3.2-py3-none-any.whl (71 kB)
+       Collecting entrypoints
+         Downloading entrypoints-0.3-py2.py3-none-any.whl (11 kB)
+       Collecting toolz
+         Downloading toolz-0.11.2-py3-none-any.whl (55 kB)
+       Collecting typing-extensions>=3.7.4.3
+         Downloading typing_extensions-4.0.1-py3-none-any.whl (22 kB)
+       Collecting gitdb<5,>=4.0.1
+         Downloading gitdb-4.0.9-py3-none-any.whl (63 kB)
+       Collecting ipywidgets>=7.0.0
+         Downloading ipywidgets-7.6.5-py2.py3-none-any.whl (121 kB)
+       Collecting ipykernel>=5.1.2
+         Downloading ipykernel-6.6.0-py3-none-any.whl (126 kB)
+       Collecting traitlets>=4.3.2
+         Downloading traitlets-5.1.1-py3-none-any.whl (102 kB)
+       Collecting six>=1.5
+         Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+       Collecting idna<4,>=2.5
+         Downloading idna-3.3-py3-none-any.whl (61 kB)
+       Collecting charset-normalizer~=2.0.0
+         Downloading charset_normalizer-2.0.9-py3-none-any.whl (39 kB)
+       Collecting certifi>=2017.4.17
+         Downloading certifi-2021.10.8-py2.py3-none-any.whl (149 kB)
+       Collecting urllib3<1.27,>=1.21.1
+         Downloading urllib3-1.26.7-py2.py3-none-any.whl (138 kB)
+       Collecting threadpoolctl>=2.0.0
+         Downloading threadpoolctl-3.0.0-py3-none-any.whl (14 kB)
+       Collecting joblib>=0.11
+         Downloading joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+       Collecting pytz-deprecation-shim
+         Downloading pytz_deprecation_shim-0.1.0.post0-py2.py3-none-any.whl (15 kB)
+       Collecting decorator>=3.4.0
+         Downloading decorator-5.1.0-py3-none-any.whl (9.1 kB)
+       Collecting smmap<6,>=3.0.1
+         Downloading smmap-5.0.0-py3-none-any.whl (24 kB)
+       Collecting debugpy<2.0,>=1.0.0
+         Downloading debugpy-1.5.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.9 MB)
+       Collecting ipython>=7.23.1
+         Downloading ipython-7.30.1-py3-none-any.whl (791 kB)
+       Collecting matplotlib-inline<0.2.0,>=0.1.0
+         Downloading matplotlib_inline-0.1.3-py3-none-any.whl (8.2 kB)
+       Collecting jupyter-client<8.0
+         Downloading jupyter_client-7.1.0-py3-none-any.whl (129 kB)
+       Collecting nbformat>=4.2.0
+         Downloading nbformat-5.1.3-py3-none-any.whl (178 kB)
+       Collecting ipython-genutils~=0.2.0
+         Downloading ipython_genutils-0.2.0-py2.py3-none-any.whl (26 kB)
+       Collecting jupyterlab-widgets>=1.0.0
+         Downloading jupyterlab_widgets-1.0.2-py3-none-any.whl (243 kB)
+       Collecting widgetsnbextension~=3.5.0
+         Downloading widgetsnbextension-3.5.2-py2.py3-none-any.whl (1.6 MB)
+       Collecting MarkupSafe>=2.0
+         Downloading MarkupSafe-2.0.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (30 kB)
+       Collecting pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,>=0.14.0
+         Downloading pyrsistent-0.18.0-cp39-cp39-manylinux1_x86_64.whl (117 kB)
+       Collecting tzdata
+         Downloading tzdata-2021.5-py2.py3-none-any.whl (339 kB)
+       Collecting pickleshare
+         Downloading pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+       Collecting pexpect>4.3
+         Downloading pexpect-4.8.0-py2.py3-none-any.whl (59 kB)
+       Collecting prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0
+         Downloading prompt_toolkit-3.0.24-py3-none-any.whl (374 kB)
+       Collecting pygments
+         Downloading Pygments-2.10.0-py3-none-any.whl (1.0 MB)
+       Collecting backcall
+         Downloading backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+       Collecting jedi>=0.16
+         Downloading jedi-0.18.1-py2.py3-none-any.whl (1.6 MB)
+       Collecting nest-asyncio>=1.5
+         Downloading nest_asyncio-1.5.4-py3-none-any.whl (5.1 kB)
+       Collecting pyzmq>=13
+         Downloading pyzmq-22.3.0-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.1 MB)
+       Collecting jupyter-core>=4.6.0
+         Downloading jupyter_core-4.9.1-py3-none-any.whl (86 kB)
+       Collecting notebook>=4.4.1
+         Downloading notebook-6.4.6-py3-none-any.whl (9.9 MB)
+       Collecting parso<0.9.0,>=0.8.0
+         Downloading parso-0.8.3-py2.py3-none-any.whl (100 kB)
+       Collecting Send2Trash>=1.8.0
+         Downloading Send2Trash-1.8.0-py3-none-any.whl (18 kB)
+       Collecting terminado>=0.8.3
+         Downloading terminado-0.12.1-py3-none-any.whl (15 kB)
+       Collecting argon2-cffi
+         Downloading argon2_cffi-21.3.0-py3-none-any.whl (14 kB)
+       Collecting nbconvert
+         Downloading nbconvert-6.3.0-py3-none-any.whl (556 kB)
+       Collecting prometheus-client
+         Downloading prometheus_client-0.12.0-py2.py3-none-any.whl (57 kB)
+       Collecting ptyprocess>=0.5
+         Downloading ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+       Collecting wcwidth
+         Downloading wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+       Collecting argon2-cffi-bindings
+         Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (86 kB)
+       Collecting nbclient<0.6.0,>=0.5.0
+         Downloading nbclient-0.5.9-py3-none-any.whl (69 kB)
+       Collecting jupyterlab-pygments
+         Downloading jupyterlab_pygments-0.1.2-py2.py3-none-any.whl (4.6 kB)
+       Collecting mistune<2,>=0.8.1
+         Downloading mistune-0.8.4-py2.py3-none-any.whl (16 kB)
+       Collecting pandocfilters>=1.4.1
+         Downloading pandocfilters-1.5.0-py2.py3-none-any.whl (8.7 kB)
+       Collecting testpath
+         Downloading testpath-0.5.0-py3-none-any.whl (84 kB)
+       Collecting bleach
+         Downloading bleach-4.1.0-py2.py3-none-any.whl (157 kB)
+       Collecting defusedxml
+         Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+       Collecting cffi>=1.0.1
+         Downloading cffi-1.15.0-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (444 kB)
+       Collecting webencodings
+         Downloading webencodings-0.5.1-py2.py3-none-any.whl (11 kB)
+       Collecting pycparser
+         Downloading pycparser-2.21-py2.py3-none-any.whl (118 kB)
+       Building wheels for collected packages: sklearn, blinker
+         Building wheel for sklearn (setup.py): started
+         Building wheel for sklearn (setup.py): finished with status 'done'
+         Created wheel for sklearn: filename=sklearn-0.0-py2.py3-none-any.whl size=1309 sha256=72cd18fac739c9ff70ace09ac7acb7a586d87b20568e173ead1e948c989822d4
+         Stored in directory: /tmp/pip-ephem-wheel-cache-nl2n0csn/wheels/e4/7b/98/b6466d71b8d738a0c547008b9eb39bf8676d1ff6ca4b22af1c
+         Building wheel for blinker (setup.py): started
+         Building wheel for blinker (setup.py): finished with status 'done'
+         Created wheel for blinker: filename=blinker-1.4-py3-none-any.whl size=13478 sha256=d7680a5c24e9a9b026ba419a626b4109d73c76eaa9501a3838d6ad1646c4cdde
+         Stored in directory: /tmp/pip-ephem-wheel-cache-nl2n0csn/wheels/50/93/f8/4f0a42a03a06626d675f13907b6982ad5ecff383530af5a900
+       Successfully built sklearn blinker
+       Installing collected packages: traitlets, six, pyrsistent, attrs, wcwidth, tornado, pyzmq, python-dateutil, pyparsing, pycparser, ptyprocess, parso, nest-asyncio, jupyter-core, jsonschema, ipython-genutils, entrypoints, webencodings, pygments, prompt-toolkit, pickleshare, pexpect, packaging, nbformat, matplotlib-inline, MarkupSafe, jupyter-client, jedi, decorator, cffi, backcall, testpath, pandocfilters, nbclient, mistune, jupyterlab-pygments, jinja2, ipython, defusedxml, debugpy, bleach, argon2-cffi-bindings, terminado, Send2Trash, prometheus-client, nbconvert, ipykernel, argon2-cffi, notebook, widgetsnbextension, tzdata, smmap, pytz, numpy, jupyterlab-widgets, urllib3, typing-extensions, toolz, threadpoolctl, scipy, pytz-deprecation-shim, pillow, pandas, kiwisolver, joblib, ipywidgets, idna, gitdb, fonttools, cycler, charset-normalizer, certifi, watchdog, validators, tzlocal, toml, scikit-learn, requests, pympler, pydeck, pyarrow, protobuf, matplotlib, gitpython, click, cachetools, blinker, base58, astor, altair, streamlit, sklearn, seaborn
+       Successfully installed MarkupSafe-2.0.1 Send2Trash-1.8.0 altair-4.1.0 argon2-cffi-21.3.0 argon2-cffi-bindings-21.2.0 astor-0.8.1 attrs-21.2.0 backcall-0.2.0 base58-2.1.1 bleach-4.1.0 blinker-1.4 cachetools-5.0.0 certifi-2021.10.8 cffi-1.15.0 charset-normalizer-2.0.9 click-7.1.2 cycler-0.11.0 debugpy-1.5.1 decorator-5.1.0 defusedxml-0.7.1 entrypoints-0.3 fonttools-4.28.5 gitdb-4.0.9 gitpython-3.1.24 idna-3.3 ipykernel-6.6.0 ipython-7.30.1 ipython-genutils-0.2.0 ipywidgets-7.6.5 jedi-0.18.1 jinja2-3.0.3 joblib-1.1.0 jsonschema-4.3.2 jupyter-client-7.1.0 jupyter-core-4.9.1 jupyterlab-pygments-0.1.2 jupyterlab-widgets-1.0.2 kiwisolver-1.3.2 matplotlib-3.5.1 matplotlib-inline-0.1.3 mistune-0.8.4 nbclient-0.5.9 nbconvert-6.3.0 nbformat-5.1.3 nest-asyncio-1.5.4 notebook-6.4.6 numpy-1.21.5 packaging-21.3 pandas-1.3.5 pandocfilters-1.5.0 parso-0.8.3 pexpect-4.8.0 pickleshare-0.7.5 pillow-8.4.0 prometheus-client-0.12.0 prompt-toolkit-3.0.24 protobuf-3.19.1 ptyprocess-0.7.0 pyarrow-6.0.1 pycparser-2.21 pydeck-0.7.1 pygments-2.10.0 pympler-1.0.1 pyparsing-3.0.6 pyrsistent-0.18.0 python-dateutil-2.8.2 pytz-2021.3 pytz-deprecation-shim-0.1.0.post0 pyzmq-22.3.0 requests-2.26.0 scikit-learn-1.0.1 scipy-1.7.3 seaborn-0.11.2 six-1.16.0 sklearn-0.0 smmap-5.0.0 streamlit-1.3.0 terminado-0.12.1 testpath-0.5.0 threadpoolctl-3.0.0 toml-0.10.2 toolz-0.11.2 tornado-6.1 traitlets-5.1.1 typing-extensions-4.0.1 tzdata-2021.5 tzlocal-4.1 urllib3-1.26.7 validators-0.18.2 watchdog-2.1.6 wcwidth-0.2.5 webencodings-0.5.1 widgetsnbextension-3.5.2
+-----> Discovering process types
+       Procfile declares types -> web
+-----> Compressing...
+       Done: 247.2M
+-----> Launching...
+       Released v3
+       https://davidp7dashboard.herokuapp.com/ deployed to Heroku
+
+
+Deploiement API Flask sur Heroku
+--------------------------------
+
+1) Sur GitHub, créer un repository en public, sans readme => modelapi-flask-heroku
+   Noter l'url du repository: https://github.com/DacodacMLDS/modelapi-flask-heroku.git
+   
+2) Sur git en local, créer un repository avec tous les fichiers nécessaires:
+   Procfile
+   requirements.txt
+   P7_06_src_API_prediction.py
+   trained_gbc_model.pkl
+   templates\index.hml
+   data_predict_api.csv 
+
+   Commandes dans git bash en local:
+   git init
+   git add Procfile data_predict_api.csv trained_gbc_model.pkl P7_06_src_API_prediction.py templates\* requirements.txt
+   git commit -m "api_flask_heroku"
+   
+3) Publier sur le GitHub
+   
+   Commandes dans git bash en local:
+   git remote add origin https://github.com/DacodacMLDS/modelapi-flask-heroku.git
+   git push -u origin master
+   
+4) Sur GitHub, vérifier la présence de tous les fichiers du repo
+   
+   
+5) Sur le dashboard Heroku (https://dashboard.heroku.com)   Il faut peut-être se logger sur Heroku avant (heroku login sur Heroku CLI ou Heroku dashboard).
+
+   Clic sur bouton "Create new app"
+   Dans "app name": donner nom pour l'aaplication: davidp7apiflask
+   Clic sur le bouton "Create app"
+   Dans lécran suivant, dans la zone "Deployment method", choisir "Github".
+   Dans la zone "Connect to GitHub", renseigner le repo projet du github et clic sur "Connect".
+   Dans la zone "Manual deploy", choisir la branche à déployer (master) et clic sur "Deploy branch"
+   Vérifier si le déploiement s'est bien passé => message "Your app was successfully deployed."
+   Vérifier les logs: faire "view buil logs" dans l'application "davidp7dashboard"
+   
+6) Lien Heroku pour le dashboard: https://davidp7apiflask.herokuapp.com/
+
+7 ) Buils logs:
+
+-----> Building on the Heroku-20 stack
+-----> Determining which buildpack to use for this app
+-----> Python app detected
+-----> No Python version was specified. Using the buildpack default: python-3.9.9
+       To use a different version, see: https://devcenter.heroku.com/articles/python-runtimes
+-----> Installing python-3.9.9
+-----> Installing pip 21.3.1, setuptools 57.5.0 and wheel 0.37.0
+-----> Installing SQLite3
+-----> Installing requirements with pip
+       Collecting pandas
+         Downloading pandas-1.3.5-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.5 MB)
+       Collecting numpy
+         Downloading numpy-1.21.5-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (15.7 MB)
+       Collecting sklearn
+         Downloading sklearn-0.0.tar.gz (1.1 kB)
+         Preparing metadata (setup.py): started
+         Preparing metadata (setup.py): finished with status 'done'
+       Collecting gunicorn
+         Downloading gunicorn-20.1.0-py3-none-any.whl (79 kB)
+       Collecting flask
+         Downloading Flask-2.0.2-py3-none-any.whl (95 kB)
+       Collecting python-dateutil>=2.7.3
+         Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+       Collecting pytz>=2017.3
+         Downloading pytz-2021.3-py2.py3-none-any.whl (503 kB)
+       Collecting scikit-learn
+         Downloading scikit_learn-1.0.1-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (24.7 MB)
+       Collecting Jinja2>=3.0
+         Downloading Jinja2-3.0.3-py3-none-any.whl (133 kB)
+       Collecting Werkzeug>=2.0
+         Downloading Werkzeug-2.0.2-py3-none-any.whl (288 kB)
+       Collecting click>=7.1.2
+         Downloading click-8.0.3-py3-none-any.whl (97 kB)
+       Collecting itsdangerous>=2.0
+         Downloading itsdangerous-2.0.1-py3-none-any.whl (18 kB)
+       Collecting MarkupSafe>=2.0
+         Downloading MarkupSafe-2.0.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (30 kB)
+       Collecting six>=1.5
+         Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+       Collecting threadpoolctl>=2.0.0
+         Downloading threadpoolctl-3.0.0-py3-none-any.whl (14 kB)
+       Collecting scipy>=1.1.0
+         Downloading scipy-1.7.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (39.8 MB)
+       Collecting joblib>=0.11
+         Downloading joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+       Building wheels for collected packages: sklearn
+         Building wheel for sklearn (setup.py): started
+         Building wheel for sklearn (setup.py): finished with status 'done'
+         Created wheel for sklearn: filename=sklearn-0.0-py2.py3-none-any.whl size=1309 sha256=3d6bfe87d862aeca73f0149be5b470fa4c9187018a56055e876723457fbacb26
+         Stored in directory: /tmp/pip-ephem-wheel-cache-xa9kxunt/wheels/e4/7b/98/b6466d71b8d738a0c547008b9eb39bf8676d1ff6ca4b22af1c
+       Successfully built sklearn
+       Installing collected packages: numpy, threadpoolctl, six, scipy, MarkupSafe, joblib, Werkzeug, scikit-learn, pytz, python-dateutil, Jinja2, itsdangerous, click, sklearn, pandas, gunicorn, flask
+       Successfully installed Jinja2-3.0.3 MarkupSafe-2.0.1 Werkzeug-2.0.2 click-8.0.3 flask-2.0.2 gunicorn-20.1.0 itsdangerous-2.0.1 joblib-1.1.0 numpy-1.21.5 pandas-1.3.5 python-dateutil-2.8.2 pytz-2021.3 scikit-learn-1.0.1 scipy-1.7.3 six-1.16.0 sklearn-0.0 threadpoolctl-3.0.0
+-----> Discovering process types
+       Procfile declares types -> web
+-----> Compressing...
+       Done: 161.6M
+-----> Launching...
+       Released v3
+       https://davidp7apiflask.herokuapp.com/ deployed to Heroku
