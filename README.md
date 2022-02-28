@@ -17,7 +17,7 @@ Prêt à dépenser décide donc de développer un dashboard interactif pour que 
 Construction d'un modèle de scoring pour donner une prédiction sur la probabilité de faillite d'un client de façon automatique, à partir des données suivantes : https://www.kaggle.com/c/home-credit-default-risk/data
 
 - Préparation des données à partir d'un kernel Kaggle existant en l'adaptant aux besoins du projet par feature engineering et feature selection.
-- Elabiration d'un modèle de classification, optimisation des hyper-paramètres.
+- Elaboration d'un modèle de classification, optimisation des hyper-paramètres.
 - Mise en oeuvre d'une métrique personnalisée sous la forme d'un fonction de revenu net.
 - Choix du modèle de classification optimal suivant les métriques AUC et la fonction de revenu net.
 - Ajustement du seuil de probabilité (threshold) par rapport à la métrique personnalisée.
